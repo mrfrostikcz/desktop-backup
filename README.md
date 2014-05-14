@@ -99,6 +99,7 @@ je třeba upravit cestu k cíli záloh:
     ../../../scripts/isInFgNetwork.sh -e "/home/mpe/SHARE/FG/nas2/..." \
         || { echo "Not in FG local network, exiting..."; exit 0; }
 
+Nebo skript úplně přepsat podle svých potřeb.
 
 #Použití
 
