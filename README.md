@@ -61,7 +61,7 @@ Síťové disky, které lze pro zálohování na pobočkách použít, jsou pops
 
 ##Soubor výjimek
 Konfigurace obsahu záloh je v souboru `<profile>/exclude`.
-Název `exclude` je poněkud zavádějící, protože v něm nastavujeme co zálohovat. 
+Název `exclude` je poněkud zavádějící, protože v něm nastavujeme co zálohovat i co nezálohovat.
 
 Během zálohy se pro každý soubor nebo adresář v adresáři `TARGET` rozhoduje, jestli ho zálohovat, nebo ne.
 Pokud je `exclude` soubor prázdný, zálohuje se vše. Pokud jsou v souboru nějaká pravidla, procházejí zhora dolů.
