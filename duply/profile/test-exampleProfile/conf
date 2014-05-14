@@ -1,0 +1,52 @@
+#########################################################################################
+##
+## Duply configuration file
+##
+## !! Make sure you don't lose this file. Encrypted backups are useless without it. !!
+##
+#########################################################################################
+
+# Set output verbosity
+VERBOSITY=4
+
+# Disable preliminary GPG tests
+GPG_TEST='disabled'
+
+# Directory for temporary duplicity files (backup volumes during backup / restore)
+#TEMP_DIR=/tmp
+
+# Duply cache. Caches Backup metadata. Speeds things up, but can be removed if necessary.
+#ARCH_DIR=~/.cache/duplicity
+
+# Directory to backup
+SOURCE='/home/mpe'
+
+# Backup target. See duplicity documentation for full syntax of available backup targets (rsync, ssh, s3, etc.)
+TARGET='file:///home/mpe/SHARE/FG/nas2/Petruzelka/duply/mpeTest'
+
+# Password for backup volumes GPG encryption
+GPG_PW='__CHANGE_ME__'
+
+# Backup volume size in MB.
+DUPL_PARAMS="$DUPL_PARAMS --volsize 100 "
+
+# Optional "ignore" filename. Directory is excluded from backup when "ignore" file is present.
+DUPL_PARAMS="$DUPL_PARAMS --exclude-if-present '.duplicity-ignore'"
+
+# Full backup interval. See duplicity documentation for time interval syntax.
+#       An interval, which is a number followed by one of the characters s, m, h, D, W, M, or Y (indicating seconds,
+#       minutes, hours, days, weeks, months, or years respectively), or a series of such pairs. For instance,
+#       "1h78m" indicates the time that was one hour and 78 minutes ago. The calendar here is unsophisticated:
+#       a month is always 30 days, a year is always 365 days, and a day is always 86400 seconds.
+DUPL_PARAMS="$DUPL_PARAMS --full-if-older-than 8D "
+
+# See duplicity command remove-older-than
+#       Delete all backup sets older than the given time. Old backup sets will not be deleted if backup sets newer
+#       than time depend on them.
+MAX_AGE=2M
+
+# See duplicity command remove-all-but-n-full
+#       Delete all backups sets that are older than the count:th last full backup (in other words, keep the last
+#       count full backups and associated incremental sets). Count must be larger than zero. A value of 1 means that
+#       only the single most recent backup chain will be kept.
+MAX_FULL_BACKUPS=4

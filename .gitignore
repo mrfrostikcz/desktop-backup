@@ -1,2 +1,6 @@
 *~
 .idea
+
+## ignore all but test-* profiles
+duply/profile/*
+!duply/profile/test-*
