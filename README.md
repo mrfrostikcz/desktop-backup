@@ -2,7 +2,7 @@
 
 ##Duplicity
 
-Primárním zálohovacím nástrojem je [duplicity](http://duplicity.nongnu.org/).
+Primárním zálohovacím nástrojem je [Duplicity](http://duplicity.nongnu.org/).
 Jedná se o řádkový nástroj, který umožňuje vytváře šifrované přírůstkové zálohy.
 Podporuje více způsobů, jak / kam zálohy ukládat:
 
@@ -30,7 +30,7 @@ Pomocí libovolného programu pro správu balíků OS instalujeme příslušné 
 
 Do libovolného adresáře si stáhneme GIT Repository:
 
-    git clone git@github.com:FgForrest/desktop-backup.git
+    git clone https://github.com/FgForrest/desktop-backup.git
 
 GIT Repository obsahuje vzorový profil pro *Duply*:
 
