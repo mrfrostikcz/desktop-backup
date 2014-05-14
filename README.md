@@ -50,7 +50,8 @@ Vlastní profil vytvoříme zkopírováním adresáře vzorového profilu pod ji
     cp -a test-exampleProfile moje
 
 ##Konfigurační soubor
-Konfigurace profilu je v souboru `<profile>/conf`. Vzorový profil osahuje bohatě komentovanou základní konfiguraci.
+Konfigurace profilu je v souboru [`<profile>/conf`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/conf).
+Vzorový profil osahuje bohatě komentovanou základní konfiguraci.
 Zde je třeba změnit:
 
 * `GPG_PW='__CHANGE_ME__'` - zvolit heslo, kterým budou zálohy šifrovány 
@@ -60,7 +61,7 @@ Zde je třeba změnit:
 Síťové disky, které lze pro zálohování na pobočkách použít, jsou popsány [na Jáchymovi](http://jachym.fg.cz/cs/jachym-info/1299.html). 
 
 ##Soubor výjimek
-Konfigurace obsahu záloh je v souboru `<profile>/exclude`.
+Konfigurace obsahu záloh je v souboru [`<profile>/exclude`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/exclude).
 Název `exclude` je poněkud zavádějící, protože v něm nastavujeme co zálohovat i co nezálohovat.
 
 Během zálohy se pro každý soubor nebo adresář v adresáři `TARGET` rozhoduje, jestli ho zálohovat, nebo ne.
@@ -94,7 +95,8 @@ Příklad 2:
 
 ##Ruční práce se zálohami
 
-Pro ruční ovládání záloh slouží skript `<profile>/duply.sh <command>`. Příklad:
+Pro ruční ovládání záloh slouží skript [`<profile>/duply.sh <command>`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/duply.sh)`.
+Příklad:
 
     cd desktop-backup/duply/profile/moje
     ./duply.sh status
@@ -112,11 +114,11 @@ Příkazy jsou popsány v dokumentaci *Duply*. Několik nejdůležitějších:
 
 ##Automatické zálohy
 
-Pro automatické zálohování slouží skript `<profile>/backup-cron.sh` <command>.
+Pro automatické zálohování slouží skript [`<profile>/backup-cron.sh`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/backup-cron.sh).
 Skript ve vzorovém profilu provádí toto:
 
 * Ověří, že je spuštěn v lokální FG síti a že existuje cílový adresář na sdíleném disku.
-    Pokud ne, ukončí se a zálohu neprovede. 
+    Pokud ne, ukončí se a zálohu neprovede. (Skript [`isInFgNetwork.sh`](https://github.com/FgForrest/desktop-backup/blob/master/scripts/isInFgNetwork.sh)) 
 * Uklidí případné pozůstatky po neůspěšných zálohách
 * Provede zálohu
 * Smaže nadbytečné záloh (podle nastavení proměnných `MAX_AGE` a `MAX_FULL_BACKUPS` v konfiguračním souboru profilu)
