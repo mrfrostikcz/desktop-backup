@@ -91,6 +91,15 @@ Příklad 2:
     ## Vše ostatní vynech
     - **
 
+##Cron skript
+Ve skriptu [`<profile>/backup-cron.sh`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/backup-cron.sh)
+je třeba upravit cestu k cíli záloh:
+
+    ## only backup if in FG local network
+    ../../../scripts/isInFgNetwork.sh -e "/home/mpe/SHARE/FG/nas2/..." \
+        || { echo "Not in FG local network, exiting..."; exit 0; }
+
+
 #Použití
 
 ##Ruční práce se zálohami
