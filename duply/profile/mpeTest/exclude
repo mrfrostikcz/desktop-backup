@@ -1,0 +1,31 @@
+#########################################################################################
+##
+## Duplyicity exclude file
+##
+## See duplicity documentation for more info.
+##
+#########################################################################################
+
+## include some . directories, exclude the rest
++ /home/mpe/.ssh/
+- /home/mpe/.*
+
+## exclude some directories not worth archiving
+- /home/mpe/Downloads/*torrent*
+- /home/mpe/SHARE
+- /home/mpe/Videos
+- /home/mpe/VirtualBox VMs
+
+#############################################################################
+##
+## !!! ONLY FOR duply configuration tuning  !!!
+##
+## Exclude everything but some small directory to keep backups fast.
+##
+#############################################################################
+
+## include some directory
++ /home/mpe/Documents
+
+## exclude everything else (except included explicitly above)
+- **
