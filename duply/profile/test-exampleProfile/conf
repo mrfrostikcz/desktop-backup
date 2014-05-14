@@ -22,7 +22,7 @@ GPG_TEST='disabled'
 SOURCE='/home/mpe'
 
 # Backup target. See duplicity documentation for full syntax of available backup targets (rsync, ssh, s3, etc.)
-TARGET='file:///home/mpe/SHARE/FG/nas2/Petruzelka/duply/mpeTest'
+TARGET='file:///home/mpe/SHARE/FG/nas2/Petruzelka/duply/test-exampleProfile'
 
 # Password for backup volumes GPG encryption
 GPG_PW='__CHANGE_ME__'
