@@ -144,5 +144,5 @@ Pro automatické zálohování slouží skript [`backup-all-with-tags.sh <tag1> 
 Skript provede zálohu všech profilů s požadovanými tagy (spuštěním skriptu [`<profile>/backup.sh`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/backup.sh)). 
 Profil se zálohuje, pokud se některý z jeho tagů shoduje aspoň s jedním tagem z příkazové řádky. 
 
-Skript loguje svou činnost do adresáře [`log`](https://github.com/FgForrest/desktop-backup/blob/master/duply/log). 
+Skript loguje svou činnost do adresáře [`log`](https://github.com/FgForrest/desktop-backup/blob/master/log). 
 Skript je třeba pravidelně spouštět, třeba pomocí systémového plánovače `cron`.
