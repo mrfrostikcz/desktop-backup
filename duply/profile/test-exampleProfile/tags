@@ -1,0 +1,5 @@
+## Tags for backup-all-*.sh scripts
+##   - one tag per line, no whitespace
+##   - comments and empty lines are ignored
+
+test

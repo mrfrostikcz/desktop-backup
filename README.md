@@ -36,10 +36,11 @@ GIT Repository obsahuje vzorový profil pro *Duply*:
 
     ls -la desktop-backup/duply/profile/test-exampleProfile/
 
-    -rwxrwxr-x 1 mpe mpe  581 May 14 13:50 backup-cron.sh
+    -rwxrwxr-x 1 mpe mpe  581 May 14 13:50 backup.sh
     -rw-rw-r-- 1 mpe mpe 2276 May 14 13:50 conf
     -rwxrwxr-x 1 mpe mpe  289 May 14 13:50 duply.sh
     -rw-rw-r-- 1 mpe mpe  889 May 14 13:50 exclude
+    -rw-rw-r-- 1 mpe mpe  889 May 14 13:50 tags
 
 #Konfigurace
 
@@ -91,9 +92,24 @@ Příklad 2:
     ## Vše ostatní vynech
     - **
 
-##Cron skript
-Ve skriptu [`<profile>/backup-cron.sh`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/backup-cron.sh)
-je třeba upravit cestu k cíli záloh:
+##Tagy
+V souboru [`<profile>/tags`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/tags)
+je možné pro profil definovat tagy. Každý tag musí být na samostatném řádku.
+Tagy se používají v při automatizovaném spouštění záloh, viz. níže.
+
+##Backup skript
+Skript [`<profile>/backup.sh`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/backup.sh)
+provádí všechny operace potřebné pro provedení zálohy a promazání starých záloh.
+Skript ve vzorovém profilu provádí toto:
+
+* Ověří, že je spuštěn v lokální FG síti a že existuje cílový adresář na sdíleném disku - viz. skript 
+[`isInFgNetwork.sh`](https://github.com/FgForrest/desktop-backup/blob/master/scripts/isInFgNetwork.sh).
+Pokud ne, ukončí se a zálohu neprovede. 
+* Uklidí případné pozůstatky po neůspěšných zálohách
+* Provede zálohu
+* Smaže nadbytečné záloh (podle nastavení proměnných `MAX_AGE` a `MAX_FULL_BACKUPS` v konfiguračním souboru profilu)
+
+Ve vzorovém skriptu je třeba upravit cestu k cíli záloh:
 
     ## only backup if in FG local network
     ../../../scripts/isInFgNetwork.sh -e "/home/mpe/SHARE/FG/nas2/..." \
@@ -124,13 +140,9 @@ Příkazy jsou popsány v dokumentaci *Duply*. Několik nejdůležitějších:
 
 ##Automatické zálohy
 
-Pro automatické zálohování slouží skript [`<profile>/backup-cron.sh`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/backup-cron.sh).
-Skript ve vzorovém profilu provádí toto:
+Pro automatické zálohování slouží skript [`backup-all-with-tags.sh <tag1> [tag2] ...`](https://github.com/FgForrest/desktop-backup/blob/master/duply/backup-all-with-tags.sh).
+Skript provede zálohu všech profilů s požadovanými tagy (spuštěním skriptu skript [`<profile>/backup.sh`](https://github.com/FgForrest/desktop-backup/blob/master/duply/profile/test-exampleProfile/backup.sh)). 
+Profil se zálohuje, pokud se některý z jeho tagů shoduje aspoň s jedním tagem z příkazové řádky. 
 
-* Ověří, že je spuštěn v lokální FG síti a že existuje cílový adresář na sdíleném disku.
-    Pokud ne, ukončí se a zálohu neprovede. (Skript [`isInFgNetwork.sh`](https://github.com/FgForrest/desktop-backup/blob/master/scripts/isInFgNetwork.sh)) 
-* Uklidí případné pozůstatky po neůspěšných zálohách
-* Provede zálohu
-* Smaže nadbytečné záloh (podle nastavení proměnných `MAX_AGE` a `MAX_FULL_BACKUPS` v konfiguračním souboru profilu)
-
+Skript loguje svou činnost do adresáře [`log`](https://github.com/FgForrest/desktop-backup/blob/master/duply/log). 
 Skript je třeba pravidelně spouštět, třeba pomocí systémového plánovače `cron`.
