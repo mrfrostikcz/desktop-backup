@@ -31,6 +31,10 @@ function msg {
     [ "$1" != "0" ] && ex "$1" || return 0
 }
 
+## check prereq.
+curl -V || { echo "ERROR - not installed: curl"; ex 99; }
+
+
 ## check public IP
 echo "Check if public IP is $IP_PUBLIC"
 CNT=`curl -s -f -m $CURL_TIMEOUT "http://www.mojeip.cz/" 2>&1 | grep -c "$IP_PUBLIC"`; isNumber "$CNT"

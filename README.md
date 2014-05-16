@@ -24,9 +24,9 @@ které práci s *Duply* dále usnadňují.
 
 #Instalace
 
-Pomocí libovolného programu pro správu balíků OS instalujeme příslušné dva balíky a jejich závislosti:
+Pomocí libovolného programu pro správu balíků OS instalujeme potřebné balíky a jejich závislosti:
 
-    aptitude install duplicity duply
+    aptitude install duplicity duply curl
 
 Do libovolného adresáře si stáhneme GIT Repository:
 
@@ -136,7 +136,7 @@ Příkazy jsou popsány v dokumentaci *Duply*. Několik nejdůležitějších:
 * `backup` - provede zálohu, automaticky rozhodne, jestli *full* nebo *incremental*
 * `full` - provede *full* zálohu
 * `restore <target directory> [age]` - obnoví celou zálohu
-* `fetch <rel. path in backup> <target directory> [age]` - obnoví jeden konkrétní soubor / adresář
+* `fetch <relative path in backup> <target file or directory> [age]` - obnoví jeden konkrétní soubor / adresář
 
 ##Automatické zálohy
 
